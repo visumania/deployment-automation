@@ -15,6 +15,17 @@ on:
         description: 'Version of the image to deploy'
         required: true
         default: 'latest'
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        type: choice
+        options:
+          - DEV
+          - CRT
+          - QA
+          - UAT
+          - PRD
+        default: 'DEV'
 
 jobs:
   display-inputs:
@@ -29,3 +40,4 @@ jobs:
         echo "Branch: ${{ github.ref }}"
         echo "Country: ${{ github.event.inputs.country }}"
         echo "Image Version: ${{ github.event.inputs.image_version }}"
+        echo "Environment: ${{ github.event.inputs.environment }}"
