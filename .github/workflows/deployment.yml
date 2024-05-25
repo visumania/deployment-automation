@@ -3,10 +3,6 @@ name: Display Inputs Workflow
 on:
   workflow_dispatch:
     inputs:
-      # branch:
-      #   description: 'Branch to choose'
-      #   required: true
-      #   default: 'main'
       country:
         description: 'Country'
         required: true
@@ -27,11 +23,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.inputs.branch }}
 
     - name: Display Inputs
       run: |
-        echo "Branch: ${{ github.event.inputs.branch }}"
+        echo "Branch: ${{ github.ref }}"
         echo "Country: ${{ github.event.inputs.country }}"
         echo "Image Version: ${{ github.event.inputs.image_version }}"
